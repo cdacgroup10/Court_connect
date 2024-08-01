@@ -1,0 +1,19 @@
+.about-us {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.about-us h2 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.about-us p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+.about-us p {
+  text-align: justify;
+  text-justify: inter-word;
+}

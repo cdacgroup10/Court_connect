@@ -1,0 +1,40 @@
+
+
+.generate-events {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.generate-events h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.events-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.event-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.event-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007bff; /* Blue color for event titles */
+}
+
+.event-date {
+  font-size: 1rem;
+  color: #555;
+}

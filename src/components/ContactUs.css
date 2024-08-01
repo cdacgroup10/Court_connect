@@ -1,0 +1,52 @@
+/* ContactUs.css */
+
+.contact-us {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .contact-us h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .contact-us form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contact-us label {
+    margin-bottom: 8px;
+  }
+  
+  .contact-us input[type="text"],
+  .contact-us input[type="email"],
+  .contact-us textarea,
+  .contact-us button {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .contact-us textarea {
+    resize: vertical; /* Allows vertical resizing of textarea */
+  }
+  
+  .contact-us button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .contact-us button:hover {
+    background-color: #0056b3;
+  }
+  
