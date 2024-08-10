@@ -1,0 +1,13 @@
+.error-box {
+    background-color: #fff;
+    border: 1px solid #f00; /* Red border for visibility */
+    padding: 10px;
+    margin: 20px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Red box shadow */
+    border-radius: 5px; /* Optional: to round the corners */
+  }
+
+  .error-msg{
+    color: #f00;
+    font-size: 25px;
+  }
