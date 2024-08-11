@@ -49,6 +49,7 @@ const AddGroundForm = () => {
     let valid = true;
     const newErrors = { ...errors };
 
+    //validation for ground name 
     if (!ground.name.trim()) {
       newErrors.name = "Ground Name is required";
       valid = false;
@@ -59,12 +60,20 @@ const AddGroundForm = () => {
       newErrors.name = "";
     }
 
-    if (!ground.description.trim()) {
-      newErrors.description = "Ground Description is required";
-      valid = false;
-    } else {
-      newErrors.description = "";
-    }
+    //validation for ground description field 
+
+   if (!ground.description.trim()) {
+  newErrors.description = "Ground Description is required";
+  valid = false;
+} else if (!/^[a-zA-Z0-9 ]*$/.test(ground.description)) {
+  newErrors.description = "Ground Description should contain only letters, numbers, and spaces";
+  valid = false;
+} else if (ground.description.length > 500) {
+  newErrors.description = "Ground Description must be less than 500 characters";
+  valid = false;
+} else {
+  newErrors.description = "";
+}
 
     if (!ground.width || isNaN(ground.width) || ground.width <= 0) {
       newErrors.width = "Ground width must be a positive number";
@@ -73,21 +82,22 @@ const AddGroundForm = () => {
       newErrors.width = "";
     }
 
-    if (!ground.length || isNaN(ground.length) || ground.length <= 0) {
+    if (!ground.length || isNaN(ground.length) || ground.length < 0) {
       newErrors.length = "Ground length must be a positive number";
       valid = false;
     } else {
       newErrors.length = "";
     }
 
-    if (!ground.height || isNaN(ground.height) || ground.height <= 0) {
+    if (!ground.height || isNaN(ground.height) || ground.height < 0) {
       newErrors.height = "Ground height must be a positive number";
       valid = false;
     } else {
       newErrors.height = "";
     }
 
-    if (!ground.price || isNaN(ground.price) || ground.price <= 0) {
+    //validation for price 
+    if (!ground.price || isNaN(ground.price) || ground.price < 0) {
       newErrors.price = "Price must be a positive number";
       valid = false;
     } else {
@@ -101,12 +111,21 @@ const AddGroundForm = () => {
       newErrors.locationId = "";
     }
 
+    //validation for image select 
     if (!selectedImage) {
       newErrors.image = "Image is required";
       valid = false;
     } else {
-      newErrors.image = "";
+      const allowedExtensions = /(\.jpg|\.jpeg|\.png|\.gif|\.bmp|\.webp|\.svg|\.tiff)$/i;
+      
+      if (!allowedExtensions.test(selectedImage.name)) {
+        newErrors.image = "Only image files are allowed (jpg, jpeg, png, gif, bmp, webp, svg, tiff)";
+        valid = false;
+      } else {
+        newErrors.image = "";
+      }
     }
+    
 
     setErrors(newErrors);
     return valid;

@@ -9,62 +9,9 @@ const AddEvent = () => {
   const customer = JSON.parse(sessionStorage.getItem("active-customer"));
 
   const [locations, setLocations] = useState([]);
-
   const [grounds, setGrounds] = useState([]);
   const [locationId, setLocationId] = useState("");
-
-  const retrieveAllLocations = async () => {
-    const response = await axios.get(
-      "http://localhost:8080/api/location/fetch/"
-    );
-    return response.data;
-  };
-
   const [timeSlots, setTimeSlots] = useState([]);
-
-  const retrieveAllSlots = async () => {
-    const response = await axios.get(
-      "http://localhost:8080/api/book/ground/fetch/slots"
-    );
-    return response.data;
-  };
-
-  useEffect(() => {
-    const getAllLocations = async () => {
-      const resLocation = await retrieveAllLocations();
-      if (resLocation) {
-        setLocations(resLocation.locations);
-      }
-    };
-
-    const getAllGroundByLocation = async () => {
-      const allGrounds = await retrieveAllGroundsByLocation();
-      if (allGrounds) {
-        setGrounds(allGrounds.grounds);
-      }
-    };
-
-    const getAllSlots = async () => {
-      const allSlots = await retrieveAllSlots();
-      if (allSlots) {
-        setTimeSlots(allSlots);
-      }
-    };
-
-    if (locationId !== "") {
-      getAllGroundByLocation();
-    }
-    getAllLocations();
-    getAllSlots();
-  }, [locationId]);
-
-  const retrieveAllGroundsByLocation = async () => {
-    const response = await axios.get(
-      "http://localhost:8080/api/ground/search?locationId=" + locationId
-    );
-
-    return response.data;
-  };
 
   const [event, setEvent] = useState({
     name: "",
@@ -77,20 +24,123 @@ const AddEvent = () => {
     maxParticipant: "",
   });
 
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+    date: "",
+    minParticipant: "",
+    maxParticipant: "",
+  });
+
+  useEffect(() => {
+    const getAllLocations = async () => {
+      const response = await axios.get("http://localhost:8080/api/location/fetch/");
+      setLocations(response.data.locations);
+    };
+
+    const getAllGroundByLocation = async () => {
+      if (locationId) {
+        const response = await axios.get(`http://localhost:8080/api/ground/search?locationId=${locationId}`);
+        setGrounds(response.data.grounds);
+      }
+    };
+
+    const getAllSlots = async () => {
+      const response = await axios.get("http://localhost:8080/api/book/ground/fetch/slots");
+      setTimeSlots(response.data);
+    };
+
+    getAllLocations();
+    getAllSlots();
+    getAllGroundByLocation();
+  }, [locationId]);
+
   const handleInput = (e) => {
     setEvent({ ...event, [e.target.name]: e.target.value });
   };
 
+  const validateEvent = () => {
+    let isValid = true;
+    const newErrors = {};
+
+    // Event Name Validation
+    if (!/^[a-zA-Z0-9_.]{1,50}$/.test(event.name)) {
+      newErrors.name = "Event Name can only contain letters, digits, underscores, and dots. No spaces allowed. Length must be less than 50 characters.";
+      isValid = false;
+    }
+
+    // Event Description Validation
+    if (!/^[a-zA-Z0-9 ]{1,500}$/.test(event.description)) {
+      newErrors.description = "Event Description can only contain letters, digits, and spaces. Length must be less than 500 characters.";
+      isValid = false;
+    }
+
+    // Date Validation
+    const selectedDate = new Date(event.date);
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+
+    if (selectedDate < today) {
+      newErrors.date = "Event date must be at least 1 day in the future.";
+      isValid = false;
+    }
+
+    // Min Participants Validation
+    if (event.minParticipant < 1 || isNaN(event.minParticipant)) {
+      newErrors.minParticipant = "Minimum participants must be at least 1.";
+      isValid = false;
+    }
+
+    // Max Participants Validation
+    if (event.maxParticipant < 1 || isNaN(event.maxParticipant)) {
+      newErrors.maxParticipant = "Maximum participants must be at least 1.";
+      isValid = false;
+    } else if (event.maxParticipant < event.minParticipant) {
+      newErrors.maxParticipant = "Maximum participants must be greater than or equal to minimum participants.";
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+
+    return isValid;
+  };
+
   const saveEvent = (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:8080/api/event/add", event)
-      .then((response) => {
-        console.log("result", response);
-        const res = response.data;
+    if (validateEvent()) {
+      axios
+        .post("http://localhost:8080/api/event/add", event)
+        .then((response) => {
+          const res = response.data;
+          if (res.success) {
+            toast.success(res.responseMessage, {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
 
-        if (res.success) {
-          toast.success(res.responseMessage, {
+            setTimeout(() => {
+              navigate("/home");
+            }, 3000);
+          } else {
+            toast.error(res.responseMessage, {
+              position: "top-center",
+              autoClose: 1000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error adding event", error);
+          toast.error("Error adding event. Please try again later.", {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: false,
@@ -99,52 +149,22 @@ const AddEvent = () => {
             draggable: true,
             progress: undefined,
           });
-
-          setTimeout(() => {
-            navigate("/home");
-          }, 3000);
-        } else {
-          toast.error(res.responseMessage, {
-            position: "top-center",
-            autoClose: 1000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-        }
-      })
-      .catch((error) => {
-        console.error("Error adding event", error);
-        toast.error("Error adding event. Please try again later.", {
-          position: "top-center",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
         });
-      });
+    }
   };
 
   return (
     <div>
+      <ToastContainer />
       <div className="mt-2 d-flex aligns-items-center justify-content-center">
-        <div
-          className="card form-card border-color custom-bg"
-          style={{ width: "50rem" }}
-        >
+        <div className="card form-card border-color custom-bg" style={{ width: "50rem" }}>
           <div className="card-header bg-color custom-bg-text text-center">
             <h5 className="card-title">Add Event</h5>
           </div>
           <div className="card-body text-color">
             <form className="row g-3">
               <div className="col-md-6 mb-3">
-                <label htmlFor="name" className="form-label">
-                  <b>Event Name</b>
-                </label>
+                <label htmlFor="name" className="form-label"><b>Event Name</b></label>
                 <input
                   type="text"
                   className="form-control"
@@ -153,11 +173,10 @@ const AddEvent = () => {
                   onChange={handleInput}
                   value={event.name}
                 />
+                {errors.name && <div className="text-danger">{errors.name}</div>}
               </div>
               <div className="col-md-6 mb-3">
-                <label htmlFor="description" className="form-label">
-                  <b>Event Description</b>
-                </label>
+                <label htmlFor="description" className="form-label"><b>Event Description</b></label>
                 <textarea
                   className="form-control"
                   id="description"
@@ -166,82 +185,68 @@ const AddEvent = () => {
                   onChange={handleInput}
                   value={event.description}
                 />
+                {errors.description && <div className="text-danger">{errors.description}</div>}
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label">
-                  <b>Location</b>
-                </label>
-
+                <label className="form-label"><b>Location</b></label>
                 <select
                   name="locationId"
                   onChange={(e) => setLocationId(e.target.value)}
                   className="form-control"
                 >
                   <option value="">Select Location</option>
-
-                  {locations.map((location) => {
-                    return (
-                      <option value={location.id}> {location.city} </option>
-                    );
-                  })}
+                  {locations.map((location) => (
+                    <option key={location.id} value={location.id}>{location.city}</option>
+                  ))}
                 </select>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label className="form-label">
-                  <b>Turf</b>
-                </label>
-
+                <label className="form-label"><b>Turf</b></label>
                 <select
                   name="groundId"
                   onChange={handleInput}
                   className="form-control"
                 >
                   <option value="">Select Turf</option>
-
-                  {grounds.map((ground) => {
-                    return (
-                      <option value={ground.id}>
-                        {" "}
-                        {ground.name + " [ Rs." + ground.price + "]"}{" "}
-                      </option>
-                    );
-                  })}
+                  {grounds.map((ground) => (
+                    <option key={ground.id} value={ground.id}>
+                      {ground.name} [ Rs.{ground.price} ]
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div className="col-md-6 mb-3">
-                <label for="date">Booking Date</label>
+                <label htmlFor="date">Booking Date</label>
                 <input
                   type="date"
-                  class="form-control"
+                  className="form-control"
                   id="date"
                   name="date"
                   onChange={handleInput}
                   value={event.date}
                   required
                 />
+                {errors.date && <div className="text-danger">{errors.date}</div>}
               </div>
               <div className="col-md-6 mb-3">
-                <label for="date">Booking Time Slot</label>
+                <label htmlFor="timeSlot">Booking Time Slot</label>
                 <select
                   name="timeSlot"
                   onChange={handleInput}
                   className="form-control"
                 >
                   <option value="">Select Time Slot</option>
-
-                  {timeSlots.map((slot) => {
-                    return <option value={slot}> {slot} </option>;
-                  })}
+                  {timeSlots.map((slot, index) => (
+                    <option key={index} value={slot}>{slot}</option>
+                  ))}
                 </select>
               </div>
 
               <div className="col-md-6 mb-3 mt-1">
-                <label htmlFor="quantity" className="form-label">
-                  <b>Event Min Participant</b>
-                </label>
+                <label htmlFor="minParticipant" className="form-label"><b>Event Min Participant</b></label>
                 <input
                   type="number"
                   className="form-control"
@@ -250,12 +255,11 @@ const AddEvent = () => {
                   onChange={handleInput}
                   value={event.minParticipant}
                 />
+                {errors.minParticipant && <div className="text-danger">{errors.minParticipant}</div>}
               </div>
 
               <div className="col-md-6 mb-3 mt-1">
-                <label htmlFor="quantity" className="form-label">
-                  <b>Event Max Participant</b>
-                </label>
+                <label htmlFor="maxParticipant" className="form-label"><b>Event Max Participant</b></label>
                 <input
                   type="number"
                   className="form-control"
@@ -264,6 +268,7 @@ const AddEvent = () => {
                   onChange={handleInput}
                   value={event.maxParticipant}
                 />
+                {errors.maxParticipant && <div className="text-danger">{errors.maxParticipant}</div>}
               </div>
 
               <div className="d-flex aligns-items-center justify-content-center">

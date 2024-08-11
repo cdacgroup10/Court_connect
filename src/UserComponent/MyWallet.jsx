@@ -1,21 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
 import axios from "axios";
 
 const MyWallet = () => {
   let navigate = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("active-customer"));
   const [walletAmount, setWalletAmount] = useState(user.walletAmount);
-
   const [walletRequest, setWalletRequest] = useState({
-    userId: "",
+    userId: user.id,
     walletAmount: "",
   });
-
-  walletRequest.userId = user.id;
+  const [error, setError] = useState("");
 
   const handleInput = (e) => {
     setWalletRequest({ ...walletRequest, [e.target.name]: e.target.value });
@@ -34,29 +31,34 @@ const MyWallet = () => {
 
   const retrieveMyWallet = async () => {
     const response = await axios.get(
-      "http://localhost:8080/api/user/customer/wallet/fetch?userId=" + user.id
+      `http://localhost:8080/api/user/customer/wallet/fetch?userId=${user.id}`
     );
-    console.log(response.data);
     return response.data;
   };
 
+  const validateAmount = () => {
+    const amount = parseFloat(walletRequest.walletAmount);
+    if (isNaN(amount) || amount <= 0) {
+      setError("Amount must be a positive number.");
+      return false;
+    }
+    setError("");
+    return true;
+  };
+
   const addMoneyInWallet = (e) => {
-    fetch("http://localhost:8080/api/user/add/wallet/money", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(walletRequest),
-    })
-      .then((result) => {
-        console.log("result", result);
-        result.json().then((res) => {
-          console.log(res);
-
+    e.preventDefault();
+    if (validateAmount()) {
+      axios
+        .post("http://localhost:8080/api/user/add/wallet/money", walletRequest, {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          const res = response.data;
           if (res.success) {
-            console.log("Got the success response");
-
             toast.success(res.responseMessage, {
               position: "top-center",
               autoClose: 1000,
@@ -69,9 +71,8 @@ const MyWallet = () => {
 
             setTimeout(() => {
               window.location.reload(true);
-            }, 1000); // Redirect after 3 seconds
+            }, 1000);
           } else {
-            console.log("Didn't got success response");
             toast.error("It seems server is down", {
               position: "top-center",
               autoClose: 1000,
@@ -83,32 +84,29 @@ const MyWallet = () => {
             });
             setTimeout(() => {
               window.location.reload(true);
-            }, 1000); // Redirect after 3 seconds
+            }, 1000);
           }
+        })
+        .catch((error) => {
+          console.error(error);
+          toast.error("It seems server is down", {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
         });
-      })
-      .catch((error) => {
-        console.error(error);
-        toast.error("It seems server is down", {
-          position: "top-center",
-          autoClose: 1000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      });
-    e.preventDefault();
+    }
   };
 
   return (
     <div>
+      <ToastContainer />
       <div className="mt-2 mb-4 d-flex aligns-items-center justify-content-center">
-        <div
-          className="card form-card border-color custom-bg"
-          style={{ width: "25rem" }}
-        >
+        <div className="card form-card border-color custom-bg" style={{ width: "25rem" }}>
           <div className="card-header bg-color text-center custom-bg-text mb-3">
             <h3>My Wallet</h3>
           </div>
@@ -122,7 +120,7 @@ const MyWallet = () => {
           <div className="card-body">
             <form>
               <div className="mb-3 text-color">
-                <label for="emailId" class="form-label">
+                <label htmlFor="walletAmount" className="form-label">
                   <b>Amount</b>
                 </label>
                 <input
@@ -133,6 +131,7 @@ const MyWallet = () => {
                   value={walletRequest.walletAmount}
                   required
                 />
+                {error && <div className="text-danger">{error}</div>}
               </div>
 
               <button
@@ -142,7 +141,6 @@ const MyWallet = () => {
               >
                 Update Wallet
               </button>
-              <ToastContainer />
             </form>
           </div>
         </div>
