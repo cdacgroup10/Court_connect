@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "../images/Logo.png";
+import logo from "../images/Logo.jpg";
 import RoleNav from "./RoleNav";
 import './Header.css';
 
@@ -13,8 +13,10 @@ const Header = () => {
             src={logo}
             width="40"
             height="40"
+            id="i"
             className="d-inline-block align-top"
             alt=""
+            
           />
           <Link to="/" className="navbar-brand">
             <i>
