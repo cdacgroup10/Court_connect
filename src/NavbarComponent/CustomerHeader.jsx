@@ -77,7 +77,7 @@ const CustomerHeader = () => {
 
       <li className="nav-item">
         <Link to="#" className="nav-link active" aria-current="page">
-          <b className="text-color">{user.firstName}</b>
+          <b className="text-color"  style={{ color: 'red', padding: '10px', fontSize:'30px' }}>{user.firstName}</b>
         </Link>
       </li>
 

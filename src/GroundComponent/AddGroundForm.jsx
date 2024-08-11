@@ -52,6 +52,9 @@ const AddGroundForm = () => {
     if (!ground.name.trim()) {
       newErrors.name = "Ground Name is required";
       valid = false;
+    } else if (!/^[a-zA-Z]{3,30}$/.test(ground.name)) {
+      newErrors.name = "Ground Name must be 3-30 characters long, contain only letters, and have no spaces.";
+      valid = false;
     } else {
       newErrors.name = "";
     }
