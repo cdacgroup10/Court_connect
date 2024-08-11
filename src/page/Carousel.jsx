@@ -1,5 +1,8 @@
 
-import carousel3 from "../images/turf_slider.png";
+import ban2 from "../images/ban2.jpg";
+import ban3 from "../images/ban3.jpg";
+import gameAccessories2 from "../images/gameAccessories2.jpg";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Carousel = () => {
   return (
@@ -32,13 +35,13 @@ const Carousel = () => {
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
-          <img src={carousel3} className="d-block w-100" alt="..." />
+          <img src={ban2} className="d-block w-100" alt="..." />
         </div>
         <div className="carousel-item">
-          <img src={carousel3} className="d-block w-100" alt="..." />
+          <img src={ban3} className="d-block w-100" alt="..." />
         </div>
         <div className="carousel-item">
-          <img src={carousel3} className="d-block w-100" alt="..." />
+          <img src={gameAccessories2} className="d-block w-100" alt="..." />
         </div>
       </div>
       <button

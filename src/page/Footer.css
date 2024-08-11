@@ -1,0 +1,139 @@
+/* src/styles/custom.css */
+
+/* Footer Styles */
+footer {
+    background-color: #333; /* Dark background for the footer */
+    color: #ffffff; /* White color for text */
+    padding: 2rem 1rem; /* Padding around the footer */
+  }
+  
+  .footer-container {
+    max-width: 1200px; /* Max width for better readability */
+    margin: 0 auto; /* Center the footer */
+  }
+  
+  .text-color {
+    color: #ffffff; /* White color for text */
+  }
+  
+  .text-color-3 {
+    color: #f5a623; /* Orange color for less prominent text */
+  }
+  
+  .text-colorr {
+    color: #bfbfbf; /* Lighter gray for less prominent text */
+  }
+  
+  .text-color-4 {
+    color: #4a90e2; /* Primary color for section titles */
+  }
+  
+  .btn-rounded {
+    border-radius: 20px; /* Rounded corners for buttons */
+  }
+  
+  .btn-outline-light {
+    border-color: #ffffff; /* White border color for buttons */
+  }
+  
+  .bg-color {
+    background-color: #4a90e2; /* Primary color for the button */
+  }
+  
+  .custom-bg-text {
+    color: #ffffff; /* White text color for the button */
+  }
+  
+  footer .container-fluid {
+    padding: 0; /* Remove padding for full-width sections */
+  }
+  
+  footer h5 {
+    font-size: 1.25rem; /* Font size for section titles */
+    font-weight: 700; /* Bold font for section titles */
+    margin-bottom: 1rem; /* Space below section titles */
+  }
+  
+  footer p {
+    font-size: 1rem; /* Font size for paragraphs */
+  }
+  
+  footer ul {
+    padding-left: 0; /* Remove default padding for lists */
+    list-style: none; /* Remove bullet points */
+  }
+  
+  footer ul li {
+    margin-bottom: 0.5rem; /* Space between list items */
+  }
+  
+  footer ul li a {
+    color: #f5a623; /* Orange color for links */
+    text-decoration: none; /* Remove underline from links */
+    transition: color 0.3s; /* Smooth color transition on hover */
+  }
+  
+  footer ul li a:hover {
+    color: #4a90e2; /* Primary color on hover */
+  }
+  
+  footer hr {
+    border-top: 1px solid #444; /* Darker border color for dividers */
+  }
+  
+  .footer-bottom {
+    padding: 1rem 0; /* Padding for the bottom section */
+    border-top: 1px solid #444; /* Darker border color for top border */
+  }
+  
+  .footer-bottom a {
+    color: #4a90e2; /* Primary color for copyright link */
+    text-decoration: none; /* Remove underline from link */
+  }
+  
+  .footer-bottom a:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    footer .row {
+      flex-direction: column; /* Stack columns vertically on small screens */
+    }
+  
+    footer .col-lg-4,
+    footer .col-lg-2 {
+      text-align: center; /* Center text in columns on small screens */
+      margin-bottom: 1rem; /* Space between stacked columns */
+    }
+  
+    footer .col-lg-2 {
+      margin-bottom: 0; /* Remove bottom margin for the last column */
+    }
+  
+    .btn-rounded {
+      width: 100%; /* Full-width buttons on small screens */
+    }
+    /* src/styles/custom.css */
+
+/* Social Media Icons */
+.social-icons {
+    display: flex;
+    justify-content: center; /* Center icons horizontally */
+    gap: 1rem; /* Space between icons */
+    margin-top: 1rem; /* Space above icons */
+  }
+  
+  .social-icon {
+    font-size: 24px; /* Size of the icons */
+    color: #ffffff; /* Color of the icons */
+    transition: color 0.3s, transform 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  .social-icon:hover {
+    color: #4a90e2; /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  }
+  
+  }
+  

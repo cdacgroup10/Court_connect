@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./UserCss/UserRegister.css";
+import './UserRegister.css';
 const UserRegister = () => {
   const [user, setUser] = useState({
     firstName: "",

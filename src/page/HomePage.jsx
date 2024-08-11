@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import football_turf from "../images/football_turf.jpg";
 import cricket_turf from "../images/cricket_turf.jpg";
+import './HomePage.css';
 import Footer from "./Footer";
 
 const HomePage = () => {
@@ -13,7 +14,7 @@ const HomePage = () => {
       <div className="container mt-5">
         <div className="row">
           <div className="col-md-8">
-            <h1 className="text-color">Welcome to Turf Booking System</h1>
+            <h1 className="text-colorr">Welcome to Turf Booking System</h1>
             <p>
               Welcome to our Turf Booking System, your ultimate destination for
               seamless sports experiences! Whether you're a passionate athlete,
@@ -56,7 +57,7 @@ const HomePage = () => {
             />
           </div>
           <div className="col-md-8">
-            <h1 className="text-color ms-5">
+            <h1 className="text-colorr ms-5">
               Instant Booking & Premium Facilities
             </h1>
             <p className="ms-5">
