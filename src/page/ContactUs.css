@@ -1,0 +1,102 @@
+/* Container styling for the Contact Us section */
+.contact-us-container {
+    background: #fdfbfb; /* Light background for a clean look */
+    border-radius: 12px; /* Rounded corners for a smooth appearance */
+    padding: 40px; /* Ample padding for spacing */
+    margin: 20px auto; /* Center the container and add margin */
+    max-width: 900px; /* Restrict maximum width */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+    border: 1px solid #ddd; /* Light border for definition */
+    position: relative; /* For positioning pseudo-elements */
+    overflow: hidden; /* Hide overflow */
+  }
+  
+  /* Add a decorative element */
+  .contact-us-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.1; /* Semi-transparent effect */
+    z-index: 0; /* Place it behind content */
+  }
+  
+  /* Title styling */
+  .contact-us-title {
+    font-size: 2.5rem; /* Large font size for prominence */
+    color: #333; /* Dark color for text */
+    text-align: center; /* Center-align the title */
+    margin-bottom: 20px; /* Space below the title */
+    font-family: 'Poppins', sans-serif; /* Modern font */
+    font-weight: 600; /* Bold font weight */
+    position: relative; /* For positioning text shadow */
+    z-index: 1; /* Place it above the decorative element */
+    text-transform: uppercase; /* Uppercase text for impact */
+    letter-spacing: 1.5px; /* Spacing between letters */
+  }
+  
+  /* Add a text shadow for the title */
+  .contact-us-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); /* Text shadow effect */
+    opacity: 0.2; /* Slight shadow effect */
+    z-index: -1; /* Place behind the text */
+    transform: translate(-4px, 4px); /* Slight offset */
+  }
+  
+  /* Paragraph styling */
+  .contact-us-text {
+    font-size: 1.15rem; /* Slightly larger font size for readability */
+    color: #555; /* Darker color for text */
+    line-height: 1.8; /* Increased line height for readability */
+    text-align: justify; /* Justify text alignment */
+    font-family: 'Open Sans', sans-serif; /* Modern font for body text */
+    margin: 0; /* Remove default margins */
+    position: relative; /* For positioning text shadow */
+    z-index: 1; /* Place it above the decorative element */
+  }
+  
+  /* Add a subtle shadow to the text */
+  .contact-us-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); /* Text shadow effect */
+    opacity: 0.1; /* Slight shadow effect */
+    z-index: -1; /* Place behind the text */
+    transform: translate(2px, 2px); /* Slight offset */
+  }
+  
+  /* Add a subtle hover effect */
+  .contact-us-container:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  }
+  
+  /* Responsive design adjustments */
+  @media (max-width: 768px) {
+    .contact-us-container {
+      padding: 20px; /* Adjust padding for smaller screens */
+      margin: 15px; /* Adjust margin */
+    }
+  
+    .contact-us-title {
+      font-size: 2rem; /* Reduce title font size */
+    }
+  
+    .contact-us-text {
+      font-size: 1rem; /* Adjust text font size */
+    }
+  }
+  

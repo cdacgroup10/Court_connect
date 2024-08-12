@@ -3,10 +3,7 @@
 }
 
 .App-logo {
-  size: auto;
-  width: "150px";
-  height: "auto";
-  /* height: 80vmin; */
+  height: 40vmin;
   pointer-events: none;
 }
 
@@ -38,17 +35,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.footerclass {
-  margin-top: auto;
-}
-
-.middleContent {
-  margin-top: 1%;
-  margin-bottom: 3%;
 }

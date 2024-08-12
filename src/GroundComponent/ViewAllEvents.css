@@ -1,0 +1,105 @@
+/* Container styling */
+.container-fluid {
+    padding: 0 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Carousel styling */
+  .carousel {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Event cards container */
+  .mt-2 {
+    margin-top: 2rem;
+  }
+  
+  .mb-5 {
+    margin-bottom: 4rem;
+  }
+  
+  .row-cols-md-4 {
+    --bs-columns: 4;
+  }
+  
+  /* Card row styling */
+  .row-cols-1 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .row-cols-md-4 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Event Card styling */
+  .event-card {
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Card hover effect */
+  .event-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+  }
+  
+  /* Card image styling */
+  .event-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 4px solid #f0f0f0;
+  }
+  
+  /* Card body styling */
+  .event-card-body {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .event-card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .event-card-description {
+    font-size: 1rem;
+    color: #a5a4a4;
+  }
+  
+  /* Card badge styling */
+  .event-card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff5733;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .row-cols-md-4 {
+      --bs-columns: 2; /* Show 2 columns on medium screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .row-cols-md-4 {
+      --bs-columns: 1; /* Show 1 column on small screens */
+    }
+  }
+  

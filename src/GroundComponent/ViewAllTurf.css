@@ -1,0 +1,66 @@
+/* Container for card section */
+.card-text {
+    background-color: #ffffff; /* Clean white background for clarity */
+    padding: 30px; /* Generous padding around the content */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    margin-top: 20px; /* Margin from the top for separation */
+    
+  }
+  
+  /* Responsive grid system for cards */
+  .row-cols-md-4 {
+    margin-bottom: 20px; /* Space below the card row */
+    
+  }
+  
+  .row-cols-md-4 .col {
+    display: flex;
+    justify-content: center;
+   
+  }
+  
+  /* Individual card styling */
+  .card {
+    border: none; /* Remove default card border */
+    border-radius: 10px; /* Slightly more rounded corners */
+    overflow: hidden; /* Ensure content does not overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition effects */
+    background-color: #d8d7d7; /* Light gray background */
+   
+  }
+  
+  .card img {
+    width: 100%; /* Full width image */
+    height: 200px; /* Fixed height for consistent card height */
+    object-fit: cover; /* Ensure image covers area without distortion */
+    border-bottom: 1px solid #e0e0e0; /* Subtle border for separation */
+  }
+  
+  .card-body {
+    padding: 20px; /* Padding inside the card for content spacing */
+    color:#333333;
+  }
+  
+  .card-title {
+    font-size: 1.25rem; /* Slightly larger font size for titles */
+    font-weight: 600; /* Bold weight for emphasis */
+    color: #333333; /* Dark gray color for readability */
+    margin-bottom: 10px; /* Space below the title */
+  }
+  
+  .card-text {
+    font-size: 0.875rem; /* Standard text size */
+    color: #0e0d0d; /* Medium gray for secondary text */
+    line-height: 1.6; /* Increased line height for better readability */
+  }
+  
+  /* Hover effect for cards */
+  .card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  }
+  
+  
+  
