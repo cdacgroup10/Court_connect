@@ -2,6 +2,7 @@ import Carousel from "../page/Carousel";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import GroundCard from "./GroundCard";
+import "./ViewAllTurf.css";
 
 const ViewAllTurf = () => {
   const [grounds, setGrounds] = useState([]);
@@ -115,17 +116,17 @@ const ViewAllTurf = () => {
         </div>
       </div>
 
-      <div className="mt-2 mb-5">
-        <div className="row mt-4">
-          <div className="col-sm-12">
-            <div className="row row-cols-1 row-cols-md-4 g-4">
-              {grounds.map((ground) => {
-                return <GroundCard item={ground} />;
-              })}
-            </div>
-          </div>
-        </div>
+      <div className="card-text">
+  <div className="row mt-4">
+    <div className="col-sm-12">
+      <div className="row row-cols-1 row-cols-md-4 g-4">
+        {grounds.map((ground) => (
+          <GroundCard key={ground.id} item={ground} />
+        ))}
       </div>
+    </div>
+  </div>
+</div>
     </div>
   );
 };

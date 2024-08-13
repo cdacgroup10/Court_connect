@@ -3,6 +3,8 @@ import axios from "axios";
 import React from "react";
 import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import './ViewMyBooking.css'; 
+
 
 const ViewMyBooking = () => {
   const [allBookings, setAllBookings] = useState([]);
@@ -135,7 +137,8 @@ const ViewMyBooking = () => {
           height: "45rem",
         }}
       >
-        <div className="card-header custom-bg-text text-center bg-color">
+        <div className="card form-card ms-2 me-2 mb-5">
+        <div className="card-header">
           <h2>My Bookings</h2>
         </div>
         <div
@@ -252,6 +255,7 @@ const ViewMyBooking = () => {
             </table>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
