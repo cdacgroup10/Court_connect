@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bd531c01.css",
+    "main.js": "/static/js/main.9c99288a.js",
+    "static/js/787.da6bc063.chunk.js": "/static/js/787.da6bc063.chunk.js",
+    "static/media/cricket_turf.jpg": "/static/media/cricket_turf.09f8dc95e52c55221de8.jpg",
+    "static/media/fa-solid-900.ttf": "/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/ban2.jpg": "/static/media/ban2.62d840a5bbad7558fd18.jpg",
+    "static/media/ban3.jpg": "/static/media/ban3.d9f305b1ccca5c49d02f.jpg",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/football_turf.jpg": "/static/media/football_turf.b21f1e4d0ee6bc34807e.jpg",
+    "static/media/gameAccessories2.jpg": "/static/media/gameAccessories2.4e4c628b2ca27a9c4251.jpg",
+    "static/media/fa-solid-900.woff2": "/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/fa-regular-400.ttf": "/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/Logo.jpg": "/static/media/Logo.789f4015de40acef6e6e.jpg",
+    "static/media/fa-regular-400.woff2": "/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/star.png": "/static/media/star.8199a143596837aeb5b1.png",
+    "static/media/fa-v4compatibility.ttf": "/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "index.html": "/index.html",
+    "main.bd531c01.css.map": "/static/css/main.bd531c01.css.map",
+    "main.9c99288a.js.map": "/static/js/main.9c99288a.js.map",
+    "787.da6bc063.chunk.js.map": "/static/js/787.da6bc063.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd531c01.css",
+    "static/js/main.9c99288a.js"
+  ]
+}

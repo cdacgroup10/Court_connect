@@ -1,0 +1,94 @@
+/* src/styles/custom.css */
+
+/* Container for the registration form */
+.user-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+    padding: 2rem;
+  }
+  
+  /* Card styling */
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(56, 36, 36, 0.2); /* Soft shadow */
+    background-color: #ffffff; /* Card background */
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  /* Header styling */
+  .card-header {
+    background-color: #524c55; /* Header background */
+    color: #ffffff; /* Header text color */
+    padding: 1rem 1.5rem;
+    font-size: 1.25rem;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  /* Body styling */
+  .card-body {
+    padding: 2rem;
+  }
+  
+  /* Form control styling */
+  .form-control {
+    border-radius: 8px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: #767577;
+    box-shadow: 0 0 0 0.2rem rgba(122, 119, 122, 0.25);
+  }
+  
+  /* Label styling */
+  .form-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #333333;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Button styling */
+  .btn-primary {
+    background-color: #9d999e; /* Primary button background */
+    border-color: #747175; /* Button border color */
+    color: #ffffff; /* Button text color */
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #59555c; /* Darker shade for hover */
+    border-color: #575658;
+  }
+  
+  .btn-primary:focus {
+    box-shadow: 0 0 0 0.2rem rgba(108, 107, 109, 0.5);
+  }
+  
+  /* Toast notification */
+  .Toastify__toast-container {
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .Toastify__toast--success {
+    background-color: #28a745; /* Success background */
+    color: #ffffff;
+  }
+  
+  .Toastify__toast--error {
+    background-color: #dc3545; /* Error background */
+    color: #ffffff;
+  }
+  

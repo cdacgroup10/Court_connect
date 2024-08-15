@@ -1,45 +1,78 @@
-import './App.css';
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Navbar from './components/NavBar';
-import BookTurf from './components/BookTurf';
-import Home from './components/Home';
-import AboutUs from './components/AboutUs';
-import Play from './components/Play';
-import ContactUs from './components/ContactUs';
-import FAQ from './components/FAQ';
-import Login from './components/Login';
-import Footer from './components/Footer';
-import Register from './components/Register';
-import RegisterUser from './components/RegisterUser';
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import AboutUs from "./page/AboutUs";
+import ContactUs from "./page/ContactUs";
+import Header from "./NavbarComponent/Header";
+import HomePage from "./page/HomePage";
+import UserRegister from "./UserComponent/UserRegister";
+import UserLoginForm from "./UserComponent/UserLoginForm";
+import AddGroundForm from "./GroundComponent/AddGroundForm";
+import Ground from "./GroundComponent/Ground";
+import ViewAllCustomer from "./UserComponent/ViewAllCusomer";
+import ViewMyBooking from "./BookingComponent/ViewMyBooking";
+import ViewAllBooking from "./BookingComponent/ViewAllBooking";
+import VerifyBooking from "./BookingComponent/VerifyBooking";
+import MyWallet from "./UserComponent/MyWallet";
+import AddReview from "./ReviewComponent/AddReview";
+import ViewAllGround from "./GroundComponent/ViewAllGround";
+import ViewAllTurf from "./GroundComponent/ViewAllTurf";
+import AddLocation from "./GroundComponent/AddLocation";
+import AddEvent from "./GroundComponent/AddEvent";
+import ViewAllEvents from "./GroundComponent/ViewAllEvents";
+import EventPage from "./GroundComponent/EventPage";
+import ViewCustomerEvent from "./GroundComponent/ViewCustomerEvent";
+import ViewCustomerParticipation from "./GroundComponent/ViewCustomerParticipation";
 
 function App() {
   return (
-    <Router>
-    <body>
-      <header>
-        <Navbar />
-      </header>
-      <div className='middleContent'>
+    <div>
+      <Header />
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/play" element={<Play />} />
-        <Route path="/book" element={<BookTurf />} />
-        <Route path="/contact" element={<ContactUs/>} />
-        <Route path="/faq" element={<FAQ />} />
-        <Route path="/login" element={<Login />} />
-        
-        <Route path="/registeru" element={<RegisterUser/>}/>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/home/all/hotel/location" element={<HomePage />} />
 
-        <Route path="/Register" element={<Register />} />
+        <Route path="contact" element={<ContactUs />} />
+        <Route path="about" element={<AboutUs />} />
+
+        <Route path="user/hotel/register" element={<UserRegister />} />
+        <Route path="user/customer/register" element={<UserRegister />} />
+        <Route path="user/admin/register" element={<UserRegister />} />
+        <Route path="/user/login" element={<UserLoginForm />} />
+
+        <Route path="admin/ground/add" element={<AddGroundForm />} />
+        <Route path="book/ground/add" element={<AddGroundForm />} />
+        <Route path="user/customer/all" element={<ViewAllCustomer />} />
+
+        <Route path="/book/ground/:groundId" element={<Ground />} />
+        <Route path="user/ground/bookings" element={<ViewMyBooking />} />
+        <Route path="user/ground/booking/all" element={<ViewAllBooking />} />
+        <Route
+          path="/user/admin/verify/booking/:bookingId"
+          element={<VerifyBooking />}
+        />
+        <Route path="/customer/wallet" element={<MyWallet />} />
+        <Route path="/ground/review/add" element={<AddReview />} />
+        <Route path="/admin/ground/all" element={<ViewAllGround />} />
+        <Route path="/turf/all" element={<ViewAllTurf />} />
+        <Route path="/admin/location/add" element={<AddLocation />} />
+        <Route path="/customer/event/add" element={<AddEvent />} />
+        <Route path="/event/all" element={<ViewAllEvents />} />
+        <Route path="/event/detail/:eventId" element={<EventPage />} />
+        <Route
+          path="/customer/hosted/event/all"
+          element={<ViewCustomerEvent />}
+        />
+        <Route
+          path="/customer/event/participant"
+          element={<ViewCustomerParticipation />}
+        />
+
+        {/* <Route path="user/admin/booking/all" element={<ViewAllBooking />} />
+        <Route path="user/hotel/bookings" element={<ViewMyBooking />} />
+         */}
       </Routes>
-      </div>
-      <div className='footerclass'>
-      <Footer/>
-      </div>
-      </body>
-    </Router>
+    </div>
   );
 }
 

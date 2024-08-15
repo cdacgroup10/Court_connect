@@ -1,0 +1,42 @@
+/* Define styles for the About Us section */
+.about-us-container {
+    background-color: #ffffff; /* White background for clean look */
+    border-radius: 8px; /* Rounded corners for a softer appearance */
+    padding: 20px; /* Padding for inner spacing */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 20px auto; /* Center the container and add margin */
+    max-width: 800px; /* Restrict the width for better readability */
+  }
+  
+  /* Title styling */
+  .about-us-title {
+    font-size: 2rem; /* Larger font size for emphasis */
+    color: #2c3e50; /* Dark color for the title */
+    margin-bottom: 15px; /* Space below the title */
+    text-align: center; /* Center-align the title */
+  }
+  
+  /* Paragraph styling */
+  .about-us-text {
+    font-size: 1rem; /* Standard font size for readability */
+    color: #34495e; /* Slightly lighter color for the text */
+    line-height: 1.6; /* Improved line spacing for readability */
+    text-align: justify; /* Justify text for a clean look */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .about-us-container {
+      padding: 15px; /* Adjust padding for smaller screens */
+      margin: 15px; /* Adjust margin for smaller screens */
+    }
+  
+    .about-us-title {
+      font-size: 1.5rem; /* Adjust title font size for smaller screens */
+    }
+  
+    .about-us-text {
+      font-size: 0.9rem; /* Adjust text font size for smaller screens */
+    }
+  }
+  

@@ -1,288 +1,58 @@
-.App {
-  font-family: 'Arial', sans-serif;
-  color: #333;
-  background-color: #f5f5f5;
+body {
   margin: 0;
-  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
 }
 
-.App-header {
-  background-color: #fff;
-  padding: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.custom-bg {
+  background-color: #ECF39E;
+} 
+
+.text-color {
+  color:#132A13;
 }
 
-.logo img {
-  height: 100px;
+.text-color1 {
+  color:#D4AA00;
 }
 
-.search-bar input {
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+.border-color {
+  border-color: #132A13;
 }
 
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
+.custom-bg-text {
+  color:#ECF39E;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.bg-color {
+  background-color: #132A13;
 }
 
-/* Basic styling for the card container */
-.card-container {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
-  background-color: #f0f0f0;
+.rounded-card {
+  padding: 1.5em .5em .5em;
+  border-radius: 2em;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
 }
 
-/* Styling for individual cards */
+.form-card {
+  padding: .2em .2em .2em;
+  border-radius: 1em;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
 .card {
-  max-width: 300px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.2s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.card-content {
-  padding: 20px;
-}
-
-.card-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.card-content p {
-  font-size: 1rem;
-  color: #666;
-  line-height: 1.6;
-}
-
-.card-content .btn {
-  display: inline-block;
-  background-color: #007bff;
-  color: #fff;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.3s ease;
-}
-
-.card-content .btn:hover {
-  background-color: #0056b3;
-}
-
-nav li {
-  margin-right: 1rem;
-}
-
-nav a {
-  color: #333;
-  text-decoration: none;
-}
-
-.auth a {
-  color: #333;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-main {
-  padding: 2rem 0;
-}
-
-section {
-  padding: 1rem 0;
-  margin: 0 auto;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  text-align: center;
-}
-
-.venues-nearby,
-.book-venues,
-.discover-games,
-.popular-sports,
-.corporate-partnerships,
-.blogs,
-.app-download,
-.top-complexes {
-  text-align: center;
-}
-
-.venue-carousel,
-.venue-list,
-.game-list,
-.sport-list,
-.partner-list,
-.blog-list,
-.city-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.venue-carousel .card,
-.venue-list .card,
-.game-list .card,
-.sport-list .card,
-.partner-list .card,
-.blog-list .card,
-.city-list .card {
-  margin: 1rem;
-  width: 250px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-.see-all {
-  display: block;
-  margin: 2rem auto;
-  padding: 0.5rem 1rem;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.get-in-touch {
-  display: block;
-  margin: 2rem auto;
-  padding: 0.5rem 2rem;
-  background-color: #4CAF50;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.app-download p {
-  margin-bottom: 1rem;
-}
-
-.app-download .app-links {
-  display: flex;
-  justify-content: center;
-}
-
-.app-download .app-links a {
-  margin: 0 1rem;
-}
-
-.top-complexes .city-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-footer {
-  background-color: #333;
-  color: #fff;
-  padding: 2rem 0;
-  text-align: center;
-}
-
-.footer-logo img {
-  height: 40px;
-}
-
-.footer-info p {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 2rem 0;
-}
-
-.footer-links h3 {
-  color: #fff;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.footer-links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.app-download-footer {
-  background-color: #4CAF50;
-  color: #fff;
-  padding: 1rem 0;
-  text-align: center;
-}
-
-.app-download-footer p {
-  margin-bottom: 0;
-}
-
-.app-download-footer button {
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-  font-weight: bold;
-  cursor: pointer;
+.card:hover .product-card  {
+  transform: scale(1.02);
 }

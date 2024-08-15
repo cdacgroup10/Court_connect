@@ -1,0 +1,83 @@
+/* src/styles/custom.css */
+
+/* Navbar Styles */
+.navbar {
+    background-color: #2c3e50; /* Dark blue-gray background */
+    padding: 0.75rem 1.25rem; /* Increased padding for a more spacious look */
+  }
+  
+  .navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .custom-bg {
+    background-color: #2c3e50; /* Ensures navbar background color */
+  }
+  
+  .text-color {
+    color: #ecf0f1; /* Light color for text for contrast */
+  }
+  
+  /* Navbar Brand Styles */
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    color: #ecf0f1; /* Light color for brand text */
+    text-decoration: none; /* Remove underline from brand link */
+  }
+  
+  .navbar-brand img {
+    margin-right: 0.5rem; /* Space between logo and brand name */
+    border-radius: 50%; /* Round the logo */
+  }
+  
+  .navbar-brand b {
+    font-size: 1.5rem; /* Larger font size for brand name */
+    font-weight: 700; /* Bold font for brand name */
+    letter-spacing: 0.5px; /* Slightly spaced letters for a clean look */
+  }
+  
+  /* Navbar Toggler */
+  .navbar-toggler {
+    border: 1px solid #ecf0f1; /* Light border for the toggler */
+    background-color: #34495e; /* Toggler background color */
+  }
+  
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,<svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'><path stroke='%23ecf0f1' stroke-width='3' d='M5 7h20M5 15h20M5 23h20'/></svg>"); /* White icon for toggler */
+  }
+  
+  /* Navbar Links */
+  .nav-link {
+    color: #ecf0f1; /* Light color for nav links */
+    font-size: 1rem; /* Font size for links */
+    padding: 0.75rem 1rem; /* Padding for links */
+    text-decoration: none; /* Remove underline from links */
+    border-radius: 4px; /* Rounded corners for links */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition effect */
+  }
+  
+  .nav-link:hover,
+  .nav-link.active {
+    background-color: #34495e; /* Darker background on hover or active state */
+    color: #ffffff; /* White text color on hover */
+  }
+  
+  /* Responsive Navbar */
+  @media (max-width: 768px) {
+    .navbar-brand b {
+      font-size: 1.25rem; /* Slightly smaller font size on smaller screens */
+    }
+  
+    .nav-link {
+      font-size: 0.875rem; /* Smaller font size for links on mobile */
+      padding: 0.5rem; /* Adjust padding for better fit on smaller screens */
+    }
+  }
+  
+  #i
+  {
+    border-radius: 50px;
+  }
